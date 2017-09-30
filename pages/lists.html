@@ -1,0 +1,21 @@
+﻿<div class="row">
+	<div class="left col-lg-6  col-md-6 col-sm-6 col-xs-12">
+		<label for="cat">Выберите категорию</label><br>
+		<select name="catid" id="catid" onchange=GetSub(this.value)>
+			<option value="default">Категории</option>
+			<?php
+				$db=new ManagerDb('localhost', 'root', '654321', 'ishop');
+				$pdo=$db->connect();
+		        $ps=$pdo->prepare('select * from categories');
+		        $ps->execute();
+		        while ($row=$ps->fetch()) 
+		        {
+		          	echo "<option value='".$row['id']."'>".$row['category']."</option>";
+		        }
+		    ?>
+		</select>
+	</div>
+	<div class="left col-lg-6  col-md-6 col-sm-6 col-xs-12">
+		<div id='result'></div>
+	</div>
+</div>

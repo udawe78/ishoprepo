@@ -1,0 +1,73 @@
+/*body {
+	opacity: 0.25;
+}*/
+p {
+  font-family: Impact, fantasy;
+  font-size: 10pt;
+}
+.bec {
+background-color: #10CEBA;
+padding: 0%;
+height: 100%;
+
+}
+.bec2 {
+	background-color: #0CAAE4;
+	padding: 1%;
+}
+.imbec {
+	/*background-image: url(../images/20.jpg);*/
+	background-color: #71D6FB;
+}
+/*img { 
+	float: right; 
+    padding-left: 10px; 
+    padding-bottom: 10px; 
+	width: 30%;
+	height: 20%;
+}*/
+.fig {
+	width: 40%;
+	height: 30%;
+    float: left; /* Обтекание картинки по левому краю */
+    padding-left: 10px; /* Отступ слева */
+    padding-bottom: 10px; /* Отступ снизу */
+   }
+
+   echo'<div id="carousel" class="carousel slide">';
+		echo'<ol class="carousel-indicators">';
+			echo'<li class="active" data-target="#carousel" data-slide-to="0"></li>';
+			echo'<li data-target="#carousel" data-slide-to="1"></li>';
+			echo'<li data-target="#carousel" data-slide-to="2"></li>';
+		echo'</ol>';
+	echo'<div class="carousel-inner">';
+			echo'<div class="item active">';
+				echo'<img src='.$img1.' alt="">';
+				echo'<div class="carousel-caption">';
+					echo'<h3>Travel</h3>';
+					echo'<p>Follow your dream</p>';
+				echo'</div>';
+			echo'</div>';
+			echo'<div class="item">';
+				echo'<img src='.$img2.' alt="">';
+				echo'<div class="carousel-caption">';
+					echo'<h3>Travel</h3>';
+					echo'<p>Follow your dream</p>';
+				echo'</div>';
+			echo'</div>';
+			echo'<div class="item">';
+				echo'<img src='.$img3.' alt="">';
+				echo'<div class="carousel-caption">';
+					echo'<h3>Travel</h3>';
+					echo'<p>Follow your dream</p>';
+				echo'</div>';
+			echo'</div>';
+
+		echo'</div>';
+		echo'<a href="#carousel" class="left carousel-control" data-slide="prev">';
+			echo'<span class="glyphicon glyphicon-chevron-left"></span>';
+		echo'</a>';
+		echo'<a href="#carousel" class="right carousel-control" data-slide="next">';
+			echo'<span class="glyphicon glyphicon-chevron-right"></span>';
+		echo'</a>';
+	echo'</div>';
