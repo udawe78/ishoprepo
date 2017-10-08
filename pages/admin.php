@@ -5,16 +5,16 @@
 	});</script>
 	<div id="tabs">
 		<ul>
-			<li><a href="#tabs-1">Категории товаров</a></li>
-			<li><a href="#tabs-2">Товары</a></li>
-			<li><a href="#tabs-3">Картинки</a></li>
+			<li><a href="#tabs-1">Categories</a></li>
+			<li><a href="#tabs-2">Products</a></li>
+			<li><a href="#tabs-3">Pics</a></li>
 		</ul>	
 			<div id="tabs-1">
 				<form action='' method='post'>
-				  			<label for="category">Введите категорию</label><br>
+				  			<label for="category">Enter category</label><br>
 				    		<input type="text" name="category"><br><br>
-				    		<input type='submit' name='addcat' value='Добавить категорию'>
-							<input type='submit' name='delcat' value='Удалить'>
+				    		<input type='submit' name='addcat' value='Add category'>
+							<input type='submit' name='delcat' value='Delete'>
 							<?php 
 								$db=new ManagerDb('localhost', 'root', '654321', 'ishop');
 								$pdo=$db->connect();
@@ -34,18 +34,19 @@
 				<form action="" method='post' enctype="multipart/form-data">   
 					<?php include_once('lists.html');?>
 						<br><br>
-						<label for="itemname">Введите название товара</label><br>
+						<label for="itemname">Enter product name</label><br>
 			    		<input type="text" name="itemname"><br><br>
-			    		<label for="pricein">Цена закупки</label><br>
+			    		<label for="pricein">Purchase price</label><br>
 			    		<input type="text" name="pricein"><br><br>
-			    		<label for="pricesale">Цена продажи</label><br>
+			    		<label for="pricesale">Selling price</label><br>
 			    		<input type="text" name="pricesale"><br><br>
-			    		<label for="info">Информация о товаре</label><br>
-			    		<textarea name="info" id="" cols="30" rows="10"></textarea>
-			    		<br><br>
+			    		<label for="info">Product info</label><br>
+			    		<textarea name="info" id="" cols="60" rows="3"></textarea><br>
+			    		<label for="count">Count</label><br>
+			    		<input type="text" name="icount"><br><br>
 						<input type="file" name="file" multiple accept="image/*"><br> <!-- картинки любых форматов -->
-			    		<input type='submit' name='additem' value='Добавить товар'>
-						<input type='submit' name='delitem' value='Удалить'>
+			    		<input type='submit' name='additem' value='Add product'>
+						<input type='submit' name='delitem' value='Delete'>
 				</form>
 					<?php 
 						
@@ -61,10 +62,11 @@
 		  					$pricesale=$_POST['pricesale'];
 		  					$info=trim($_POST['info']);
 		  					$itemname=trim($_POST['itemname']);
-		  					//$data=array('itemname'=>$itemname,'catid'=>$catid,'pricein'=>$pricein,'pricesale'=>$pricesale,'info'=>$info,'imagepath'=>$path);
-		  					// var_dump($data);
-		  					$item=new Item($itemname, $catid, $pricein, $pricesale, $info);
+		  					$count=$_POST['icount'];
+		  						
+		  					$item=new Item($itemname,$catid,$pricein,$pricesale,$info,$path,$count);
 		  					$item->intoDb();
+		  					
 		  					//чтобы форма повторно не отправлялась
 		  					//echo "<script>document.location='http://shop/index.php?page=2'</script>";
 		  					//header("Location:".$_SERVER["REQUEST_URI"]);
@@ -73,15 +75,14 @@
 		  				}
 		  				if (isset($_POST['delitem']))
 		  				{
-		  					$i=Item::fromDB(k);
-		  					$i->Show();
+		  					
 		  				}
 
 		  			?>
 			</div>
 
-			<div id="tabs-3">3333333
-				
+			<div id="tabs-3">
+			tab-3				
 			</div>
 		
 

@@ -1,3 +1,8 @@
+<?php
+session_start();
+if(!isset($_SESSION['orderid']))
+	{$_SESSION['orderid']=uniqid();}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Document</title>
 	<link href="css/bootstrap.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<link href=css/style.css rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 	<script src="js/jquery-3.1.0.min.js"></script>
 </head>
@@ -16,10 +21,9 @@
 	
 	
 				<ul class="nav navbar-nav">
-					<li><a href="index.php?menu=1">Tours</a></li>
-					<li><a href="index.php?menu=2">Feedback</a></li>
-					<li><a href="index.php?menu=3">Register</a></li>
-					<li><a href="index.php?menu=4">Admin</a></li>
+					<li><a href="index.php?menu=1">Catalog</a></li>
+					<li><a href="index.php?menu=2">Register</a></li>
+					<li><a href="index.php?menu=3">Admin</a></li>
 				</ul>
 
 			
@@ -39,16 +43,14 @@
 			<?php 
 			if (isset($_GET["menu"])) {
 				$menu=$_GET["menu"];
+				
 				if ($menu==1) {
-					include_once ("pages/tours.php");
+					include_once ("pages/catalog.php");
 				}
 				if ($menu==2) {
-					include_once ("pages/feedback.php");
-				}
-				if ($menu==3) {
 					include_once ("pages/register.php");
 				}
-				if ($menu==4) {
+				if ($menu==3) {
 					include_once ("pages/admin.php");
 				}
 			}
